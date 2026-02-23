@@ -1,10 +1,8 @@
 import Archivos
 import Prestamos
-from Reportes import prestamos_vencidos
 import menus
-Prestamos_vencidos= Archivos.cargar_datos("PrestamosVencidos.csv")
 prestamos=Archivos.cargar_datos("prestamos.json")
-def menu():
+def menu(prestamos):
     while True:
         menus.limpiar_pantalla()
         menus.imprimir_encabezado(" BIENVENIDO AL MODULO DE EXAMEN")
@@ -36,26 +34,17 @@ def menu():
                 # Solo verificamos préstamos que aún están "Activos"
                 if info['estado'] == "Activo":
                     fecha_vence_num = Prestamos.fecha_a_numero(info['fecha_entrega'])
-                    usuario=info['usuario']
-                    herramienta= info['herramienta']
-                    cantidad = info['cantidad']
-                    fecha_i= info['fecha_inicio']
-                    fecha_es = info['fecha_entrega']
-                    dias_atraso = 1
+
                     
                     # Si la fecha de entrega es menor a hoy, está vencido
                     if fecha_vence_num < hoy_num:
+                        encontrado=True
                         prestamo_vencido[id_p]= {
-                            id_p,
-                            usuario,
-                            herramienta,
-                            cantidad,
-                            fecha_i,
-                            fecha_es,
-
-
-
-
+                            "usuario": info['usuario'],
+                            "herramienta": info['herramienta'],
+                            "cantidad": info['cantidad'],
+                            "fecha_i": info['fecha_inicio'],
+                            "fecha_es": info['fecha_entrega']
                         }
                         Archivos.guardar_datos_Prestamos_vencidos(prestamo_vencido,"PrestamosVencidos.csv")
                         
@@ -66,7 +55,7 @@ def menu():
         elif op == "2":
             pass
         elif op == "0":
-            Archivos.guardar_datos(Prestamos_vencidos,"PrestamosVencidos.csv")
+            Archivos. guardar_datos_Prestamos_vencidos(Prestamos_vencidos,"PrestamosVencidos.csv")
             Archivos.guardar_datos(prestamos,"prestamos.json")
             break
         else:

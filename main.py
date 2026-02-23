@@ -5,6 +5,7 @@ import menus
 import Prestamos
 import Reportes
 import Logs
+
 def iniciar():
     U=Archivos.cargar_datos("usuarios.json")
     H=Archivos.cargar_datos("herramientas.json")
@@ -45,7 +46,7 @@ def iniciar():
         'registrar_log': Logs.registrar_evento,
         'registrar_error': Logs.registrar_error,
         # Guardado
-        'guardar': Archivos.guardar_datos
+        'guardar': Archivos.guardar_datos,
     }
     menus.menu_principal(U,H,P,Funciones)
 

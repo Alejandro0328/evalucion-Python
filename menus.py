@@ -204,7 +204,6 @@ def menu_principal(usuarios, herramientas, prestamos, dic_fun):
             print("  7. 👥 Gestión de Usuarios")
             print("  8. 📈 Reportes ")
             print("  9.  Eventos y Errores ") 
-            print("  10. MODULO EXAMEN ") 
         
         print("─" * 50)
         print("  0. 🚪 Salir y Guardar")
@@ -220,7 +219,6 @@ def menu_principal(usuarios, herramientas, prestamos, dic_fun):
         
         elif opcion == "4": dic_fun['consultar_p'](herramientas, prestamos)
         elif opcion == "5": dic_fun['resumen_b'](herramientas, prestamos)
-        elif opcion == "10":dic_fun['examen'](prestamos)
         
         elif opcion == "0": 
             dic_fun['guardar'](usuarios, "usuarios.json")
